@@ -1,0 +1,16 @@
+{
+  "name": "reconstruct-plugins",
+  "owner": {
+    "name": "BlkInnovate"
+  },
+  "metadata": {
+    "description": "Reconstruct: Claude Code plugin (MCP, skills, commands)."
+  },
+  "plugins": [
+    {
+      "name": "reconstruct",
+      "description": "MCP server wiring, agent skills, and slash commands for Claude Code.",
+      "source": "./plugins/reconstruct"
+    }
+  ]
+}
