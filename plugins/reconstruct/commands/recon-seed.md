@@ -16,7 +16,7 @@ Local-first onboarding that seeds the Context Cloud. Default to scan-first infer
 - Read `.reconstruct/preferences.json` → `project_id`
 - Call `get_user_projects` (verify MCP)
 - No project_id? → "Run /recon-setup first"
-- Call `get_master_context_sections` → existing sections (for re-seed)
+- Call `query_context` → existing sections (for re-seed)
 
 ---
 

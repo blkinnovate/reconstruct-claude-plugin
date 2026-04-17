@@ -84,7 +84,7 @@ Call create_session:
 
 **When creating a session (or when user describes work):**
 
-- Call `get_global_context(project_id)` only when the work is substantial (see below). Skip for small changes.
+- Call `query_context(project_id)` only when the work is substantial (see below). Skip for small changes.
 - For most relevant context first, call with `type=implementation_plan` or `type=project_overview`
 
 ---
@@ -101,7 +101,7 @@ What would you like to work on?
 
 **Gather context (FOR PLANNING ONLY - do not write code):**
 
-- **Substantial work only** (fetch global context): new features, refactors, multi-file changes, architectural decisions, or when user mentions "implementation plan" / "architecture". Call `get_global_context(project_id)` or `get_master_context_sections`.
+- **Substantial work only** (fetch global context): new features, refactors, multi-file changes, architectural decisions, or when user mentions "implementation plan" / "architecture". Call `query_context(project_id)`.
 - Call `get_project_capsules` to see existing capsules
 - Use `codebase_search` to explore relevant code
 - Read key files to understand patterns

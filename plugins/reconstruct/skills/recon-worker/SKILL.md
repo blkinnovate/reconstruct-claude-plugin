@@ -4,7 +4,7 @@ description: "Worker agent: execute capsule plan with human approval"
 user-invocable: true
 disable-model-invocation: false
 context: main
-version: v0.4
+version: v0.5
 ---
 
 # Reconstruct Worker Agent
@@ -22,15 +22,25 @@ Execute capsule plan. Human approves changes. Validate before proceeding.
    - Multiple? → Ask which to use
    → Extract session_id
 
-3. Get plan_id from session's manager_context.active_plan_id
+3. Get capsule_id from session.linked_capsules
+   - Use the capsule for this work (match plan `capsule_ref` or the phase heading in Instructions; if multiple, first non-archived or ask)
+   - None linked? → "❌ Return to manager session" (submit_capsule_plan) to attach a capsule
+
+4. Get plan_id from session's manager_context.active_plan_id (or session_context.active_task_plan_id)
    - No plan? → "❌ Return to manager session"
 
-4. Call get_task_plan with session_id
-   → Extract plan content, execution_type
+5. Call get_task_plan with session_id
+   → Full markdown plan (Objective, Instructions, Expected Output, Progress Updates), execution_type
 
-5. Call get_capsule_context with session_id + capsule_id
+6. Call get_capsule_context with session_id + capsule_id
    → Extract: allowed_paths, forbidden_paths, guardrails
 ```
+
+### Implementation plan vs capsule scope (read this)
+
+- **`get_task_plan`** returns the **full** implementation plan (same document as `store_task_plan` / Constructor `implementationPlan`). **Every** worker run for **every** capsule should read this **whole** plan—**Instructions** carry cross-phase context; multi-phase plans name phases and dependencies.
+- **`get_capsule_context`** returns **only** scoped metadata for **one** capsule (paths, guardrails, summary, etc.). It does **not** replace the task plan—**always** call both `get_task_plan` and `get_capsule_context`.
+- **Session** holds **one** active task plan pointer (`active_plan_id` / `active_task_plan_id`) and **one or more** linked capsules. A **multi-phase** initiative from Constructor still uses **one** master plan text in storage; **each** phase’s worker picks the **correct** `capsule_id` and uses **capsule** scope + **full** plan to know what to execute.
 
 ---
 

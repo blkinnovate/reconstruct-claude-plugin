@@ -38,6 +38,12 @@ RULE: NEVER call get_project_capsules. Session provides the capsule.
 One get_capsule_context call is sufficient.
 ```
 
+### Implementation plan vs capsule scope
+
+- **`get_task_plan`** returns the **full** markdown plan (Objective, Instructions, Expected Output, Progress Updates)—the same shape as Constructor’s `implementationPlan` after merge. **Every** worker run for **every** capsule should read this **entire** plan; multi-phase plans list phases and dependencies in **Instructions**.
+- **`get_capsule_context`** returns **only** one capsule’s scope (paths, guardrails, summary). It is **not** a substitute for the task plan—**always** call both.
+- **Session** points to **one** active stored plan and **linked** capsule(s). For the next phase, use the **appropriate** `capsule_id` (match plan `capsule_ref` or phase heading) with the **same** session if the plan still applies, or follow manager handoff for a new session if your workflow splits sessions per phase.
+
 ---
 
 ## 2. Confirm Scope

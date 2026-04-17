@@ -91,7 +91,7 @@ What would you like to work on?
 
 **Gather context (FOR PLANNING ONLY - do not write code):**
 - Call `get_project_capsules` to see existing capsules
-- Call `get_master_context_sections` for project docs (if available)
+- Call `query_context` for project docs (if available)
 - Use `codebase_search` to explore relevant code
 - Read key files to understand patterns
 

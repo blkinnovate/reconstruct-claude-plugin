@@ -19,6 +19,11 @@ Get help with Reconstruct workflow.
 /recon-help [topic]   → Help on specific topic
 ```
 
+### Start Here Docs
+
+- Full onboarding: `docs/first-time-user-guide.mdx`
+- Quick help hub: `docs/help/onboarding-reference.mdx`
+
 ---
 
 ## Quick Reference
