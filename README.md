@@ -6,6 +6,8 @@ In the **[reconstruct](https://github.com/blkinnovate/reconstruct)** monorepo, t
 
 ## Users
 
+**VS Code / GitHub Copilot Agent plugins** use the separate **[reconstruct-copilot-plugin](https://github.com/blkinnovate/reconstruct-copilot-plugin)** repo (this marketplace layout is for Claude Code only; cloning this repo for VS Code does not expose a root **`plugin.json`** the way Copilot expects).
+
 1. In Claude Code: **`/plugin marketplace add blkinnovate/reconstruct-claude-plugin`**
 2. Then: **`/plugin install reconstruct@reconstruct-plugins`** (user scope is default), or use **`reconstruct install --assistant claude`** from [reconstruct-cli](https://github.com/blkinnovate/reconstruct/tree/main/reconstruct-cli), which runs the same flow and writes your **`.mcp.json`** credentials into the plugin cache.
 
