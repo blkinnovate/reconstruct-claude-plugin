@@ -1,21 +1,21 @@
 ---
-priority: 6
-command_name: recon-ask-constructor
+name: recon-ask-constructor
 description: "Generate a capsule + implementation plan via ask_constructor"
+user-invocable: true
+disable-model-invocation: false
+context: main
 version: v0.2
-aliases: [ask-constructor, recon-constructor]
 ---
 
 # recon-ask-constructor
 
-Use `ask_constructor` to generate a coding-ready task package (virtual capsule context + implementation plan) in one call, convert it into a real capsule + stored plan, then execute the plan in this same chat (no separate manager handoff required).
+**Claude Code:** Use this skill when the user wants the Constructor single-chat flow: one session for planning and execution without a separate manager handoff.
+
+Use `ask_constructor` to generate a coding-ready task package (virtual capsule context + implementation plan) in one call, convert it into a real capsule + stored plan, then execute the plan in this same chat.
 
 ## Usage
 
-```
-/recon-ask-constructor <mission>
-/ask-constructor <mission>
-```
+When the user asks for Constructor-style planning and execution in one session, follow this skill. Treat `<mission>` as the user’s goal text.
 
 Optional: include extra context cues in the mission text, like file paths (`/app/...`) or key terms to search.
 
@@ -24,14 +24,14 @@ Optional: include extra context cues in the mission text, like file paths (`/app
 ## Flow
 
 1. Read `.reconstruct/preferences.json` → `project_id`
-   - Missing? → "❌ Run /recon-setup first"
+   - Missing? → "❌ Complete recon-setup first (recon-setup skill / project setup)"
 
 2. Call `ask_constructor`:
 
    - Required:
      - `project_id`
    - Recommended:
-     - `mission`: user-provided mission text (required for this command)
+     - `mission`: user-provided mission text (required for this flow)
      - `search`: short query that helps retrieval (derive from mission)
      - `linked_file_paths`: include any explicit file paths mentioned by the user
 
@@ -68,7 +68,8 @@ Optional: include extra context cues in the mission text, like file paths (`/app
 
 ## Output contract
 
-At the end of this command, you must report:
+At the end of this flow, report:
+
 - Session ID
 - Capsule ID
 - Stored plan ID

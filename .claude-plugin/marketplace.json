@@ -4,12 +4,12 @@
     "name": "BlkInnovate"
   },
   "metadata": {
-    "description": "Reconstruct: Claude Code plugin (MCP, skills, commands)."
+    "description": "Reconstruct: Claude Code plugin (MCP and agent skills)."
   },
   "plugins": [
     {
       "name": "reconstruct",
-      "description": "MCP server wiring, agent skills, and slash commands for Claude Code.",
+      "description": "MCP server wiring and agent skills for Claude Code.",
       "source": "./plugins/reconstruct"
     }
   ]
