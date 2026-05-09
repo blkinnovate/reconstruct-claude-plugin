@@ -41,6 +41,16 @@ Get help with Reconstruct workflow. This guide is designed for hackathon partici
 | `/recon-worker` | Worker | Execute the plan with your approval |
 | `/recon-help` | Help | This help |
 
+### Docs
+
+| Need | Link |
+|------|------|
+| Get started | https://reconstruct.app/docs/quickstart |
+| First project guide | https://reconstruct.app/docs/guides/first-project |
+| Core concepts | https://reconstruct.app/docs/concepts |
+| Cursor commands | https://reconstruct.app/docs/integrations/cursor-commands |
+| Troubleshooting | https://reconstruct.app/docs/guides/troubleshooting |
+
 ### Typical Hackathon Workflow
 
 **Option A: Starting from scratch (greenfield)**
@@ -197,8 +207,9 @@ Step 5: Return to manager when done
 ## Still Stuck?
 
 ```
-1. Check reconstruct.app dashboard for project state
-2. Review capsule settings in dashboard
-3. Try /recon-sync to refresh context
-4. Delete .reconstruct/ and run /recon-setup fresh
+1. Open https://reconstruct.app/docs/guides/troubleshooting
+2. Check reconstruct.app dashboard for project state
+3. Review capsule settings in dashboard
+4. Try /recon-sync to refresh context
+5. Delete .reconstruct/ and run /recon-setup fresh
 ```

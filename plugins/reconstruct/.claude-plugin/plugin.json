@@ -1,7 +1,7 @@
 {
   "name": "reconstruct",
   "description": "Reconstruct: MCP server and agent skills for Claude Code (installed via reconstruct CLI). See https://code.claude.com/docs/en/plugins",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "author": {
     "name": "BlkInnovate"
   }
